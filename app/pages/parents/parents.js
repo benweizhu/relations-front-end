@@ -1,8 +1,7 @@
 angular.module('parentsApp', ['restApp','ngRoute'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/parents', {
-            templateUrl: 'pages/parents/parents.html',
-            controller: 'parentsController'
+            templateUrl: 'pages/parents/parents.html'
         });
     }])
     .controller('parentsController', ['$scope', 'locusRest', 'kitRest', 'piRest',
