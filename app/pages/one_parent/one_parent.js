@@ -1,4 +1,10 @@
-angular.module('oneParentApp', ['restApp'])
+angular.module('oneParentApp', ['restApp','ngRoute'])
+    .config(['$routeProvider', function($routeProvider) {
+        $routeProvider.when('/one-parent', {
+            templateUrl: 'pages/one_parent/one-parent.html',
+            controller: 'oneParentController'
+        });
+    }])
     .controller('oneParentController', ['$scope', 'locusRest', 'kitRest', 'piRest',
         function ($scope, locusRest, kitRest, piRest) {
 

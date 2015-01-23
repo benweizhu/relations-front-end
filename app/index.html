@@ -1,8 +1,23 @@
 <html>
 <head>
     <title></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 </head>
-<body>
+<body ng-app="myApp">
+
+<a href="#/one-parent">one-parent</a>
+
+<a href="#/parents">parents</a>
+
+<div ng-view></div>
+
+
+<script src="js/libs/angular/angular.js"></script>
+<script src="js/libs/angular-resource/angular-resource.js"></script>
+<script src="js/libs/angular-route/angular-route.js"></script>
+<script src="pages/one_parent/one_parent.js"></script>
+<script src="pages/parents/parents.js"></script>
+<script src="js/commons/rest.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

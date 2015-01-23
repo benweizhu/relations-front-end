@@ -1,20 +1,13 @@
-<html>
-<head>
-    <title>parents</title>
-    <script src="../js/libs/angular/angular.js"></script>
-    <script src="../js/libs/angular-resource/angular-resource.js"></script>
-    <script src="../js/modules/rest.js"></script>
-    <script src="../js/modules/one_parent.js"></script>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-</head>
-<body ng-app="oneParentApp">
-<div ng-controller="oneParentController">
+<body ng-app="parentsApp">
+<div ng-controller="parentsController">
     试剂盒: <select ng-model="kit" ng-options="kit for kit in kits" ng-change="selectKit()"></select>
     <table>
         <thead>
         <th>基因座</th>
         <th>AF1</th>
         <th>AF2</th>
+        <th>M1</th>
+        <th>M2</th>
         <th>C1</th>
         <th>C2</th>
         <th>PI</th>
@@ -25,6 +18,8 @@
             <td>{{locus.code}}</td>
             <td>{{locus.af1}}</td>
             <td>{{locus.af2}}</td>
+            <td>{{locus.m1}}</td>
+            <td>{{locus.m2}}</td>
             <td>{{locus.c1}}</td>
             <td>{{locus.c2}}</td>
             <td>{{locus.pi}}</td>
@@ -34,6 +29,8 @@
             <td><select ng-model="code" ng-options="locusCode for locusCode in locusCodes"></select></td>
             <td><input type="text" ng-model="af1"></td>
             <td><input type="text" ng-model="af2"></td>
+            <td><input type="text" ng-model="m1"></td>
+            <td><input type="text" ng-model="m2"></td>
             <td><input type="text" ng-model="c1"></td>
             <td><input type="text" ng-model="c2"></td>
         </tr>
@@ -42,4 +39,3 @@
     <input type="button" value="添加" ng-click="add()">
 </div>
 </body>
-</html>
