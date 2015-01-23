@@ -7,7 +7,7 @@ module.exports = function (grunt) {
         bower: {
             install: {
                 options: {
-                    targetDir: './src/js/libs'
+                    targetDir: './app/js/libs'
                 }
             }
         },
