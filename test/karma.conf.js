@@ -20,6 +20,7 @@ module.exports = function (config) {
             'app/scripts/app.js',
             'app/scripts/controllers/about.js',
             'app/scripts/controllers/main.js',
+            'app/scripts/service/rest.js',
             'test/spec/**/*.spec.js'
         ],
 
