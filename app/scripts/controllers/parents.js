@@ -1,9 +1,6 @@
-angular.module('parentsApp', ['restApp','ngRoute'])
-    .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/parents', {
-            templateUrl: 'pages/parents/parents.html'
-        });
-    }])
+'use strict';
+
+angular.module('parentsApp', ['restApp'])
     .controller('parentsController', ['$scope', 'locusRest', 'kitRest', 'piRest',
         function ($scope, locusRest, kitRest, piRest) {
 
@@ -19,7 +16,7 @@ angular.module('parentsApp', ['restApp','ngRoute'])
                 });
             };
 
-            $scope.remove = function(index){
+            $scope.remove = function (index) {
                 $scope.locuses.splice(index, 1);
             };
 
