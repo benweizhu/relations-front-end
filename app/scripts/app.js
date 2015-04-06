@@ -2,12 +2,8 @@
 
 angular
     .module('relationsFrontEndApp', [
-        'ngAnimate',
-        'ngCookies',
         'ngResource',
-        'ngRoute',
-        'ngSanitize',
-        'ngTouch'
+        'ngRoute'
     ])
     .config(function ($routeProvider) {
         $routeProvider

@@ -2,64 +2,76 @@
 // http://karma-runner.github.io/0.12/config/configuration-file.html
 // Generated on 2015-04-04 using
 // generator-karma 0.9.0
+'use strict';
 
-module.exports = function(config) {
-  'use strict';
+module.exports = function (config) {
 
-  config.set({
-    // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: true,
+    config.set({
 
-    // base path, that will be used to resolve files and exclude
-    basePath: '',
+        // base path, that will be used to resolve files and exclude
+        basePath: '../',
 
-    // testing framework to use (jasmine/mocha/qunit/...)
-    frameworks: ['jasmine'],
+        // list of files / patterns to load in the browser
+        files: [
+            'bower_components/angular/angular.js',
+            'bower_components/angular-mocks/angular-mocks.js',
+            'bower_components/angular-resource/angular-resource.js',
+            'bower_components/angular-route/angular-route.js',
+            'app/scripts/app.js',
+            'app/scripts/controllers/about.js',
+            'app/scripts/controllers/main.js',
+            'test/spec/**/*.spec.js'
+        ],
 
-    // list of files / patterns to load in the browser
-    files: [
-    ],
+        // list of files / patterns to exclude
+        exclude: [
+        ],
 
-    // list of files / patterns to exclude
-    exclude: [
-    ],
+        // frameworks to use
+        // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
+        frameworks: ['jasmine'],
 
-    // web server port
-    port: 8080,
+        // preprocess matching files before serving them to the browser
+        // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+        preprocessors: {
+        },
 
-    // Start these browsers, currently available:
-    // - Chrome
-    // - ChromeCanary
-    // - Firefox
-    // - Opera
-    // - Safari (only Mac)
-    // - PhantomJS
-    // - IE (only Windows)
-    browsers: [
-      'Chrome'
-    ],
 
-    // Which plugins to enable
-    plugins: [
-      'karma-chrome-launcher',
-      'karma-jasmine'
-    ],
+        // test results reporter to use
+        // possible values: 'dots', 'progress'
+        // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+        reporters: ['progress'],
 
-    // Continuous Integration mode
-    // if true, it capture browsers, run tests and exit
-    singleRun: false,
 
-    colors: true,
+        // web server port
+        port: 9876,
 
-    // level of logging
-    // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
-    logLevel: config.LOG_INFO,
 
-    // Uncomment the following lines if you are using grunt's server to run the tests
-    // proxies: {
-    //   '/': 'http://localhost:9000/'
-    // },
-    // URL root prevent conflicts with the site root
-    // urlRoot: '_karma_'
-  });
+        // enable / disable colors in the output (reporters and logs)
+        colors: true,
+
+
+        // level of logging
+        // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+        logLevel: config.LOG_INFO,
+
+
+        // enable / disable watching file and executing tests whenever any file changes
+        autoWatch: true,
+
+
+        // start these browsers
+        // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+        browsers: ['Chrome'],
+
+
+        plugins: [
+            'karma-chrome-launcher',
+            'karma-jasmine'
+        ],
+
+        // Continuous Integration mode
+        // if true, Karma captures browsers, runs the tests and exits
+        singleRun: false
+    });
 };
