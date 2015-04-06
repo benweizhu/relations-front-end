@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('oneParentApp', ['restApp'])
+angular.module('relationsFrontEndApp')
     .controller('oneParentController', ['$scope', 'locusRest', 'kitRest', 'piRest',
         function ($scope, locusRest, kitRest, piRest) {
 
@@ -16,7 +16,7 @@ angular.module('oneParentApp', ['restApp'])
                 });
             };
 
-            $scope.remove = function(index){
+            $scope.remove = function (index) {
                 $scope.locuses.splice(index, 1);
             };
 
