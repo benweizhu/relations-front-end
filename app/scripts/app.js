@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name relationsFrontEndApp
- * @description
- * # relationsFrontEndApp
- *
- * Main module of the application.
- */
 angular
     .module('relationsFrontEndApp', [
         'ngAnimate',
