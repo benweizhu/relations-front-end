@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('relationsFrontEndApp')
+angular.module('relations')
     .controller('oneParentController', ['$scope', 'locusRest', 'kitRest', 'piRest',
         function ($scope, locusRest, kitRest, piRest) {
 
