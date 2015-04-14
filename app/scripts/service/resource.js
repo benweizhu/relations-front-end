@@ -3,7 +3,7 @@
 var port = '8080';
 var localhost = 'http://localhost:' + port;
 
-angular.module('restService', ['ngResource'])
+angular.module('relations')
     .factory('kitRest', ['$resource', function ($resource) {
         return $resource(localhost + '/relations-api/kits');
     }])
