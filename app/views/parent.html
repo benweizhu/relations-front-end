@@ -1,10 +1,17 @@
 <div ng-controller="oneParentController">
     <div>
-        <span>试剂盒:</span>
-        <select ng-model="kit" ng-options="kit as kit.name for kit in kits" ng-change="getLoci()">
-            <option value="">--请选择--</option>
-        </select>
+        <form class="form-inline">
+            <div class="form-group">
+                <label>试剂盒</label>
+                <select ng-model="kit" ng-options="kit as kit.name for kit in kits" ng-change="getLoci()"
+                        class="form-control">
+                    <option value="">--请选择--</option>
+                </select>
+            </div>
+        </form>
     </div>
+    <br>
+
     <div>
         <table class="table table-bordered">
             <thead>
@@ -24,29 +31,42 @@
                 <td>{{record.c1}}</td>
                 <td>{{record.c2}}</td>
                 <td>{{record.pi}}</td>
-                <td><input type="button" ng-click="remove($index)" value="删除"></td>
+                <td>
+                    <button class="btn btn-danger" ng-click="remove($index)">删除</button>
+                </td>
             </tr>
             </tbody>
         </table>
     </div>
     <div>
-        <select ng-model="newRecord.locus" ng-options="locus.locusId as locus.name for locus in loci">
-            <option value="">--请选择--</option>
-        </select>
-        <input type="text" ng-model="newRecord.af1">
-        <input type="text" ng-model="newRecord.af2">
-        <input type="text" ng-model="newRecord.c1">
-        <input type="text" ng-model="newRecord.c2">
-        <input type="button" value="添加" ng-click="addRecord()">
+        <form class="form-inline">
+            <div class="form-group">
+                <label>基因座</label>
+                <select ng-model="newRecord.locus" ng-options="locus.locusId as locus.name for locus in loci"
+                        class="form-control">
+                    <option value="">--请选择--</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>AF1:</label>
+                <input type="text" ng-model="newRecord.af1" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>AF2:</label>
+                <input type="text" ng-model="newRecord.af2" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>C1:</label>
+                <input type="text" ng-model="newRecord.c1" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>C2:</label>
+                <input type="text" ng-model="newRecord.c2" class="form-control">
+            </div>
+            <button class="btn btn-info" ng-click="addRecord()">添加</button>
+        </form>
     </div>
     <div>
         {{message}}
-    </div>
-    <div>
-        <div>Json Debug</div>
-        <pre>{{kit | json}}</pre>
-        <pre>{{newRecord.locus | json}}</pre>
-        <pre>{{newRecord | json}}</pre>
-        <pre>{{records | json}}</pre>
     </div>
 </div>

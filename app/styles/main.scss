@@ -2,3 +2,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
+
+.table {
+  th {
+    max-width: 14.28%;
+    width: 14.28%;
+  }
+}
