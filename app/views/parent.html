@@ -1,21 +1,9 @@
 <div ng-controller="oneParentController">
-    <br>
-
     <div>
-        <form class="form-inline">
-            <div class="form-group">
-                <label class="text-danger">试剂盒:</label>
-                <select ng-model="kit" ng-options="kit as kit.name for kit in kits" ng-change="getLoci()"
-                        class="form-control">
-                    <option value="">--请选择--</option>
-                </select>
-            </div>
-        </form>
+        <h3 class="text-primary">显示报告</h3>
     </div>
-    <br>
-
     <div>
-        <table class="table table-bordered">
+        <table class="table">
             <thead>
             <th>基因座</th>
             <th>AF1</th>
@@ -23,7 +11,7 @@
             <th>C1</th>
             <th>C2</th>
             <th>PI</th>
-            <th>操作</th>
+            <th>删除</th>
             </thead>
             <tbody>
             <tr ng-repeat="record in records">
@@ -40,38 +28,54 @@
             </tbody>
         </table>
     </div>
-    <br>
 
+    <br>
+    <br>
     <div>
-        <form class="form-inline">
-            <div class="form-group">
-                <label class="text-success">基因座:</label>
+        <h3 class="text-danger">计算输入</h3>
+    </div>
+    <table class="table">
+        <thead>
+        <th>试剂盒</th>
+        <th>等位基因</th>
+        <th>AF1</th>
+        <th>AF2</th>
+        <th>C1</th>
+        <th>C2</th>
+        <th>操作</th>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <select ng-model="kit" ng-options="kit as kit.name for kit in kits" ng-change="getLoci()"
+                        class="form-control">
+                    <option value="">--请选择--</option>
+                </select>
+            </td>
+            <td>
                 <select ng-model="newRecord.locus" ng-options="locus.locusId as locus.name for locus in loci"
                         class="form-control">
                     <option value="">--请选择--</option>
                 </select>
-            </div>
-            <div class="form-group">
-                <label class="text-primary">AF1:</label>
+            </td>
+            <td>
                 <input type="text" ng-model="newRecord.af1" class="form-control">
-            </div>
-            <div class="form-group">
-                <label class="text-primary">AF2:</label>
+            </td>
+            <td>
                 <input type="text" ng-model="newRecord.af2" class="form-control">
-            </div>
-            <div class="form-group">
-                <label class="text-primary">C1:</label>
+            </td>
+            <td>
                 <input type="text" ng-model="newRecord.c1" class="form-control">
-            </div>
-            <div class="form-group">
-                <label class="text-primary">C2:</label>
+            </td>
+            <td>
                 <input type="text" ng-model="newRecord.c2" class="form-control">
-            </div>
-            <div class="form-group">
-                <button class="btn btn-info" ng-click="addRecord()">添加新纪录</button>
-            </div>
-        </form>
-    </div>
+            </td>
+            <td>
+                <button class="btn btn-success btn-sm btn-block" ng-click="addRecord()">添加</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
     <div class="text-danger">
         {{message}}
     </div>
