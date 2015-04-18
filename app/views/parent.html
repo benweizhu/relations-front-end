@@ -1,7 +1,7 @@
 <div ng-controller="oneParentController">
     <div>
         <span>试剂盒:</span>
-        <select ng-model="kit" ng-options="kit for kit in kits" ng-change="selectKit()">
+        <select ng-model="kit" ng-options="kit as kit.name for kit in kits" ng-change="selectKit()">
         </select>
     </div>
     <div>

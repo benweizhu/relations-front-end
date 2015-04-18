@@ -1,12 +1,12 @@
 'use strict';
 
-app.controller('oneParentController', ['$scope', 'locusRest', 'kitRest', 'piRest',
+angular.module('relations').controller('oneParentController', ['$scope', 'locusRest', 'kitRest', 'piRest',
     function ($scope, locusRest, kitRest, piRest) {
 
         $scope.locuses = [];
 
-        kitRest.get({}, function (data) {
-            $scope.kits = data.kits;
+        kitRest.query({}, function (data) {
+            $scope.kits = data;
         });
 
         $scope.selectKit = function () {

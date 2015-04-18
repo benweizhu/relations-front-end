@@ -3,9 +3,9 @@
 var port = '8080';
 var localhost = 'http://localhost:' + port;
 
-app
+angular.module('relations')
     .factory('kitRest', ['$resource', function ($resource) {
-        return $resource(localhost + '/relations-api/kits');
+        return $resource(localhost + '/relations-api/kits', null, {'query': {method: 'GET', isArray: true}});
     }])
     .factory('locusRest', ['$resource', function ($resource) {
         return $resource(localhost + '/relations-api/kits/:kitId/loci');

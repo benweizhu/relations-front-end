@@ -1,5 +1,5 @@
 'use strict';
 
-app.controller('MainCtrl', function () {
+angular.module('relations').controller('MainCtrl', function () {
 
 });
