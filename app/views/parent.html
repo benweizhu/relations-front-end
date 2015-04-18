@@ -2,6 +2,7 @@
     <div>
         <span>试剂盒:</span>
         <select ng-model="kit" ng-options="kit as kit.name for kit in kits" ng-change="getLoci()">
+            <option value="">--请选择--</option>
         </select>
     </div>
     <div>
@@ -16,29 +17,32 @@
             <th>操作</th>
             </thead>
             <tbody>
-            <tr ng-repeat="locus in locuses">
-                <td>{{locus.code}}</td>
-                <td>{{locus.af1}}</td>
-                <td>{{locus.af2}}</td>
-                <td>{{locus.c1}}</td>
-                <td>{{locus.c2}}</td>
-                <td>{{locus.pi}}</td>
+            <tr ng-repeat="record in records">
+                <td>{{record.locus}}</td>
+                <td>{{record.af1}}</td>
+                <td>{{record.af2}}</td>
+                <td>{{record.c1}}</td>
+                <td>{{record.c2}}</td>
+                <td>{{record.pi}}</td>
                 <td><input type="button" ng-click="remove($index)" value="删除"></td>
             </tr>
             </tbody>
         </table>
     </div>
     <div>
-        <select ng-model="locus" ng-options="locus as locus.name for locus in loci"></select>
-        <input type="text" ng-model="af1">
-        <input type="text" ng-model="af2">
-        <input type="text" ng-model="c1">
-        <input type="text" ng-model="c2">
-        <input type="button" value="添加" ng-click="add()">
+        <select ng-model="newRecord.locus" ng-options="locus.locusId as locus.name for locus in loci">
+            <option value="">--请选择--</option>
+        </select>
+        <input type="text" ng-model="newRecord.af1">
+        <input type="text" ng-model="newRecord.af2">
+        <input type="text" ng-model="newRecord.c1">
+        <input type="text" ng-model="newRecord.c2">
+        <input type="button" value="添加" ng-click="addRecord()">
     </div>
     <div>
         <div>Json Debug</div>
         <pre>{{kit | json}}</pre>
-        <pre>{{locus | json}}</pre>
+        <pre>{{newRecord.locus | json}}</pre>
+        <pre>{{newRecord | json}}</pre>
     </div>
 </div>

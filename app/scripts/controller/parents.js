@@ -3,7 +3,7 @@
 angular.module('relations').controller('parentsController', ['$scope', 'locusRest', 'kitRest', 'piRest',
     function ($scope, locusRest, kitRest, piRest) {
 
-        $scope.locuses = [];
+        $scope.records = [];
 
         kitRest.get({}, function (data) {
             $scope.kits = data.kits;
@@ -16,7 +16,7 @@ angular.module('relations').controller('parentsController', ['$scope', 'locusRes
         };
 
         $scope.remove = function (index) {
-            $scope.locuses.splice(index, 1);
+            $scope.records.splice(index, 1);
         };
 
         $scope.add = function () {
@@ -25,7 +25,7 @@ angular.module('relations').controller('parentsController', ['$scope', 'locusRes
                 m2: $scope.m2, c1: $scope.c1, c2: $scope.c2};
 
             piRest.calculateParentsPi(req, function (resp) {
-                $scope.locuses.push({code: $scope.code, af1: $scope.af1, af2: $scope.af2, m1: $scope.m1,
+                $scope.records.push({code: $scope.code, af1: $scope.af1, af2: $scope.af2, m1: $scope.m1,
                     m2: $scope.m2, c1: $scope.c1, c2: $scope.c2, pi: resp.value});
             });
 
