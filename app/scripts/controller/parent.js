@@ -5,13 +5,13 @@ angular.module('relations').controller('oneParentController', ['$scope', 'locusR
 
         $scope.locuses = [];
 
-        kitRest.query({}, function (data) {
-            $scope.kits = data;
+        kitRest.query({}, function (response) {
+            $scope.kits = response;
         });
 
-        $scope.selectKit = function () {
-            locusRest.get({kit: $scope.kit}, function (data) {
-                $scope.locusCodes = data.codes;
+        $scope.getLoci = function () {
+            locusRest.query({kitId: $scope.kit.kitId}, function (response) {
+                $scope.loci = response;
             });
         };
 

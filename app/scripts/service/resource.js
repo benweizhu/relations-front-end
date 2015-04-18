@@ -8,7 +8,7 @@ angular.module('relations')
         return $resource(localhost + '/relations-api/kits', null, {'query': {method: 'GET', isArray: true}});
     }])
     .factory('locusRest', ['$resource', function ($resource) {
-        return $resource(localhost + '/relations-api/kits/:kitId/loci');
+        return $resource(localhost + '/relations-api/kits/:kitId/loci', {kitId: '@id'}, {'query': {method: 'GET', isArray: true}});
     }])
     .factory('piRest', ['$resource', function ($resource) {
         return $resource(localhost + '/relations-api/pi/:action', {}, {

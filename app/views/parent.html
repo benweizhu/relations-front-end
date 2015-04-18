@@ -1,7 +1,7 @@
 <div ng-controller="oneParentController">
     <div>
         <span>试剂盒:</span>
-        <select ng-model="kit" ng-options="kit as kit.name for kit in kits" ng-change="selectKit()">
+        <select ng-model="kit" ng-options="kit as kit.name for kit in kits" ng-change="getLoci()">
         </select>
     </div>
     <div>
@@ -29,11 +29,16 @@
         </table>
     </div>
     <div>
-        <select ng-model="code" ng-options="locusCode for locusCode in locusCodes"></select>
+        <select ng-model="locus" ng-options="locus as locus.name for locus in loci"></select>
         <input type="text" ng-model="af1">
         <input type="text" ng-model="af2">
         <input type="text" ng-model="c1">
         <input type="text" ng-model="c2">
         <input type="button" value="添加" ng-click="add()">
+    </div>
+    <div>
+        <div>Json Debug</div>
+        <pre>{{kit | json}}</pre>
+        <pre>{{locus | json}}</pre>
     </div>
 </div>
