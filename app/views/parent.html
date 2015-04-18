@@ -1,8 +1,10 @@
 <div ng-controller="oneParentController">
+    <br>
+
     <div>
         <form class="form-inline">
             <div class="form-group">
-                <label>试剂盒</label>
+                <label class="text-danger">试剂盒:</label>
                 <select ng-model="kit" ng-options="kit as kit.name for kit in kits" ng-change="getLoci()"
                         class="form-control">
                     <option value="">--请选择--</option>
@@ -32,41 +34,45 @@
                 <td>{{record.c2}}</td>
                 <td>{{record.pi}}</td>
                 <td>
-                    <button class="btn btn-danger" ng-click="remove($index)">删除</button>
+                    <button class="btn btn-danger btn-sm btn-block" ng-click="remove($index)">删除</button>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
+    <br>
+
     <div>
         <form class="form-inline">
             <div class="form-group">
-                <label>基因座</label>
+                <label class="text-success">基因座:</label>
                 <select ng-model="newRecord.locus" ng-options="locus.locusId as locus.name for locus in loci"
                         class="form-control">
                     <option value="">--请选择--</option>
                 </select>
             </div>
             <div class="form-group">
-                <label>AF1:</label>
+                <label class="text-primary">AF1:</label>
                 <input type="text" ng-model="newRecord.af1" class="form-control">
             </div>
             <div class="form-group">
-                <label>AF2:</label>
+                <label class="text-primary">AF2:</label>
                 <input type="text" ng-model="newRecord.af2" class="form-control">
             </div>
             <div class="form-group">
-                <label>C1:</label>
+                <label class="text-primary">C1:</label>
                 <input type="text" ng-model="newRecord.c1" class="form-control">
             </div>
             <div class="form-group">
-                <label>C2:</label>
+                <label class="text-primary">C2:</label>
                 <input type="text" ng-model="newRecord.c2" class="form-control">
             </div>
-            <button class="btn btn-info" ng-click="addRecord()">添加</button>
+            <div class="form-group">
+                <button class="btn btn-info" ng-click="addRecord()">添加新纪录</button>
+            </div>
         </form>
     </div>
-    <div>
+    <div class="text-danger">
         {{message}}
     </div>
 </div>
