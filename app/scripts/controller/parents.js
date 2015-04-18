@@ -1,7 +1,5 @@
 'use strict';
 
-var app = angular.module('relations');
-
 app.controller('parentsController', ['$scope', 'locusRest', 'kitRest', 'piRest',
     function ($scope, locusRest, kitRest, piRest) {
 
