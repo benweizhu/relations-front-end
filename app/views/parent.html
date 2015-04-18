@@ -18,7 +18,7 @@
             </thead>
             <tbody>
             <tr ng-repeat="record in records">
-                <td>{{record.locus}}</td>
+                <td>{{locusName(record.locus)}}</td>
                 <td>{{record.af1}}</td>
                 <td>{{record.af2}}</td>
                 <td>{{record.c1}}</td>
@@ -40,9 +40,13 @@
         <input type="button" value="添加" ng-click="addRecord()">
     </div>
     <div>
+        {{message}}
+    </div>
+    <div>
         <div>Json Debug</div>
         <pre>{{kit | json}}</pre>
         <pre>{{newRecord.locus | json}}</pre>
         <pre>{{newRecord | json}}</pre>
+        <pre>{{records | json}}</pre>
     </div>
 </div>
