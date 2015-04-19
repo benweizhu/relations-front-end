@@ -28,9 +28,11 @@
             <tr>
                 <td colspan="2">CPI = {{cpi}}</td>
                 <td colspan="2">RCP = {{rcp}}</td>
-                <td>当前记录数  <span class="badge">{{records.length}}</span></td>
+                <td>当前记录数 <span class="badge">{{records.length}}</span></td>
                 <td></td>
-                <td></td>
+                <td>
+                    <button class="btn btn-warning btn-sm btn-block" ng-csv="getArray()" filename="result.csv">导出到CSV</button>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -84,7 +86,6 @@
         </tr>
         </tbody>
     </table>
-    <button type="button" ng-csv="getArray()" filename="test.csv">Export</button>
     <div class="alert alert-danger" ng-show="message">
         {{message}}
     </div>
