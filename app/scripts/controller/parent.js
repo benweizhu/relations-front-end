@@ -62,15 +62,19 @@ angular.module('relations').controller('parentCtrl', ['$scope', '$log', 'locusRe
             $scope.records.splice(index, 1);
         };
 
-        $scope.getArray = function(){
-            var exportedRecords = _.clone($scope.records);
-            _.each(exportedRecords, function(record){
+        $scope.getArray = function () {
+            var exportedRecords = [];
+            _.each($scope.records, function (record) {
+                var exportedRecord = _.clone(record);
                 _.each($scope.loci, function (locus) {
-                    if (locus.locusId === record.locus) {
-                        record.locus = locus.name;
+                    if (locus.locusId === exportedRecord.locus) {
+                        exportedRecord.locus = locus.name;
                     }
                 });
+                exportedRecords.push(exportedRecord);
             });
+            exportedRecords.push({cpiName: 'cpi', cpi: $scope.cpi});
+            exportedRecords.push({rcpName: 'rcp', rcp: $scope.rcp});
             return exportedRecords;
         };
 
