@@ -15,14 +15,14 @@
             </thead>
             <tbody>
             <tr ng-repeat="record in records">
-                <td>{{locusName(record.locus)}}</td>
+                <td>{{getLocusName(record.locus)}}</td>
                 <td>{{record.af1}}</td>
                 <td>{{record.af2}}</td>
                 <td>{{record.c1}}</td>
                 <td>{{record.c2}}</td>
                 <td>{{record.pi}}</td>
                 <td>
-                    <button class="btn btn-danger btn-sm btn-block" ng-click="remove($index)">删除</button>
+                    <button class="btn btn-danger btn-sm btn-block" ng-click="removeRecord($index)">删除</button>
                 </td>
             </tr>
             </tbody>
