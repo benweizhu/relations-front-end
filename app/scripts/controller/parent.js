@@ -62,5 +62,9 @@ angular.module('relations').controller('parentCtrl', ['$scope', '$log', 'locusRe
             $scope.records.splice(index, 1);
         };
 
+        $scope.getArray = function(){
+            return $scope.records;
+        };
+
     }])
 ;

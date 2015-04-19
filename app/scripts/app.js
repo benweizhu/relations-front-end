@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('relations', ['ngResource', 'ngRoute'])
+angular.module('relations', ['ngResource', 'ngRoute', 'ngSanitize', 'ngCsv'])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
