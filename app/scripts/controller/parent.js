@@ -29,7 +29,7 @@ angular.module('relations').controller('oneParentController', ['$scope', '$log',
             $scope.message = '';
             _.each($scope.records, function (record) {
                 if (record.locus === $scope.newRecord.locus) {
-                    $scope.message = '该基因座已经存在';
+                    $scope.message = '基因座' + $scope.getLocusName($scope.newRecord.locus) + '已经存在';
                 }
             });
             if (_.isEmpty($scope.message)) {
@@ -47,6 +47,23 @@ angular.module('relations').controller('oneParentController', ['$scope', '$log',
         $scope.removeRecord = function (index) {
             $scope.records.splice(index, 1);
         };
+
+        $scope.cpi = function () {
+            if (!_.isEmpty($scope.records)) {
+                return 1;
+            } else {
+                return 0;
+            }
+        };
+
+        $scope.rcp = function () {
+            if ($scope.cpi() !== 0) {
+                return 1;
+            } else {
+                return 0;
+            }
+        };
+
 
     }])
 ;
