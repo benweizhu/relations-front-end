@@ -5,17 +5,19 @@ angular.module('relations', ['ngResource', 'ngRoute'])
         $routeProvider
             .when('/', {
                 templateUrl: 'views/main.html',
-                controller: 'MainCtrl'
+                controller: 'mainCtrl'
             })
             .when('/about', {
                 templateUrl: 'views/about.html',
-                controller: 'AboutCtrl'
+                controller: 'aboutCtrl'
             })
             .when('/parent', {
-                templateUrl: 'views/parent.html'
+                templateUrl: 'views/parent.html',
+                controller: 'parentCtrl'
             })
             .when('/parents', {
-                templateUrl: 'views/parents.html'
+                templateUrl: 'views/parents.html',
+                controller: 'parentsCtrl'
             })
             .otherwise({
                 redirectTo: '/'

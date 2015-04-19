@@ -21,7 +21,7 @@
 <![endif]-->
 
 <!-- Add your site or application content here -->
-<div>
+<div ng-controller="mainCtrl">
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
@@ -36,9 +36,9 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a ng-href="#/parent">单亲</a></li>
-                    <li><a ng-href="#/parents">双亲</a></li>
-                    <li><a ng-href="#/about">关于</a></li>
+                    <li class="{{setActive('/parent')}}"><a ng-href="#/parent">单亲</a></li>
+                    <li class="{{setActive('/parents')}}"><a ng-href="#/parents">双亲</a></li>
+                    <li class="{{setActive('/about')}}"><a ng-href="#/about">关于</a></li>
                 </ul>
             </div>
         </div>
@@ -48,6 +48,7 @@
 <div class="container">
     <div ng-view=""></div>
 </div>
+
 
 <!-- build:js(.) scripts/vendor.js -->
 <!-- bower:js -->

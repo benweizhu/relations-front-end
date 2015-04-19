@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('relations').controller('parentsController', ['$scope', 'locusRest', 'kitRest', 'piRest',
+angular.module('relations').controller('parentsCtrl', ['$scope', 'locusRest', 'kitRest', 'piRest',
     function ($scope, locusRest, kitRest, piRest) {
 
         $scope.records = [];

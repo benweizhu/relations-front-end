@@ -1,5 +1,5 @@
 'use strict';
 
-angular.module('relations').controller('AboutCtrl', function () {
+angular.module('relations').controller('aboutCtrl', function () {
 
 });
