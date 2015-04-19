@@ -31,7 +31,9 @@
                 <td>当前记录数 <span class="badge">{{records.length}}</span></td>
                 <td></td>
                 <td>
-                    <button class="btn btn-warning btn-sm btn-block" ng-csv="getArray()" filename="result.csv">导出到CSV</button>
+                    <button class="btn btn-warning btn-sm btn-block" ng-csv="getArray()"
+                            csv-header="['基因座', 'AF1', 'AF2', 'C1', 'C2', 'PI']" filename="result.csv">导出到CSV
+                    </button>
                 </td>
             </tr>
             </tbody>

@@ -63,7 +63,15 @@ angular.module('relations').controller('parentCtrl', ['$scope', '$log', 'locusRe
         };
 
         $scope.getArray = function(){
-            return $scope.records;
+            var exportedRecords = _.clone($scope.records);
+            _.each(exportedRecords, function(record){
+                _.each($scope.loci, function (locus) {
+                    if (locus.locusId === record.locus) {
+                        record.locus = locus.name;
+                    }
+                });
+            });
+            return exportedRecords;
         };
 
     }])
