@@ -8,6 +8,7 @@ angular.module('relations').controller('oneParentController', ['$scope', '$log',
         kitRest.query({}, function (response) {
             $scope.kits = response;
         });
+        $scope.cpi = 0;
 
         $scope.getLoci = function () {
             locusRest.query({kitId: $scope.kit.kitId}, function (success) {
@@ -36,6 +37,14 @@ angular.module('relations').controller('oneParentController', ['$scope', '$log',
                 piRest.calculateOneParentPi($scope.newRecord, function (success) {
                         $scope.newRecord.pi = success.value;
                         $scope.records.push(_.clone($scope.newRecord));
+
+                        var pis = [];
+                        _.each($scope.records, function (record) {
+                            pis.push(_.clone(record.pi));
+                        });
+                        piRest.calculateCpi(pis, function (success) {
+                            $scope.cpi = success.value;
+                        });
                     }, function (failure) {
                         $scope.message = '无法计算此PI值';
                         $log.log(failure);
@@ -48,22 +57,13 @@ angular.module('relations').controller('oneParentController', ['$scope', '$log',
             $scope.records.splice(index, 1);
         };
 
-        $scope.cpi = function () {
-            if (!_.isEmpty($scope.records)) {
-                return 1;
-            } else {
-                return 0;
-            }
-        };
-
         $scope.rcp = function () {
-            if ($scope.cpi() !== 0) {
+            if ($scope.cpi !== 0) {
                 return 1;
             } else {
                 return 0;
             }
         };
-
 
     }])
 ;

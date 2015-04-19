@@ -21,6 +21,16 @@ angular.module('relations')
                 method: 'POST',
                 params: { action: 'oneparent' },
                 isArray: false
+            },
+            calculateRcp: {
+                method: 'POST',
+                params: { action: 'rcp' },
+                isArray: false
+            },
+            calculateCpi: {
+                method: 'POST',
+                params: { action: 'cpi' },
+                isArray: false
             }
         });
     }]);
