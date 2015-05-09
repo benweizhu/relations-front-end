@@ -3,7 +3,7 @@
 angular.module('relations').controller('parentCtrl', ['$scope', '$log', 'locusRest', 'kitRest', 'piRest',
     function ($scope, $log, locusRest, kitRest, piRest) {
 
-        function init() {
+        function initScopeVariables() {
             $scope.records = [];
             $scope.newRecord = {};
             kitRest.query({}, function (response) {
@@ -33,7 +33,15 @@ angular.module('relations').controller('parentCtrl', ['$scope', '$log', 'locusRe
             });
         }
 
-        init();
+        function getPiArray() {
+            var pis = [];
+            _.each($scope.records, function (record) {
+                pis.push(_.clone(record.pi));
+            });
+            return pis;
+        }
+
+        initScopeVariables();
 
         $scope.getLoci = function () {
             locusRest.query({kitId: $scope.kit.kitId}, function (success) {
@@ -61,12 +69,7 @@ angular.module('relations').controller('parentCtrl', ['$scope', '$log', 'locusRe
                     function (success) {
                         $scope.newRecord.pi = success.value;
                         $scope.records.push(_.clone($scope.newRecord));
-
-                        var pis = [];
-                        _.each($scope.records, function (record) {
-                            pis.push(_.clone(record.pi));
-                        });
-                        return piRest.calculateCpi(pis).$promise;
+                        return piRest.calculateCpi(getPiArray()).$promise;
                     }, function (failure) {
                         $scope.message = '无法计算此PI值';
                         $log.log(failure);
