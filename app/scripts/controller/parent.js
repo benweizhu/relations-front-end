@@ -13,6 +13,26 @@ angular.module('relations').controller('parentCtrl', ['$scope', '$log', 'locusRe
             $scope.rcp = 0;
         }
 
+        function rejectIfSameLocusExistInTable() {
+            _.each($scope.records, function (record) {
+                if (record.locus === $scope.newRecord.locus) {
+                    $scope.message = '基因座' + $scope.getLocusName($scope.newRecord.locus) + '已经存在';
+                }
+            });
+        }
+
+        function pushRecordToCsv(exportedRecords) {
+            _.each($scope.records, function (record) {
+                var exportedRecord = _.clone(record);
+                _.each($scope.loci, function (locus) {
+                    if (locus.locusId === exportedRecord.locus) {
+                        exportedRecord.locus = locus.name;
+                    }
+                });
+                exportedRecords.push(exportedRecord);
+            });
+        }
+
         init();
 
         $scope.getLoci = function () {
@@ -31,19 +51,10 @@ angular.module('relations').controller('parentCtrl', ['$scope', '$log', 'locusRe
             return locusName;
         };
 
-        function rejectIfSameLocusExistInTable() {
-            _.each($scope.records, function (record) {
-                if (record.locus === $scope.newRecord.locus) {
-                    $scope.message = '基因座' + $scope.getLocusName($scope.newRecord.locus) + '已经存在';
-                }
-            });
-        }
-
         $scope.addRecord = function () {
             $scope.message = '';
             rejectIfSameLocusExistInTable();
             if (_.isEmpty($scope.message)) {
-
                 var piPromise = piRest.calculateOneParentPi($scope.newRecord).$promise;
 
                 var cpiPromise = piPromise.then(
@@ -55,9 +66,7 @@ angular.module('relations').controller('parentCtrl', ['$scope', '$log', 'locusRe
                         _.each($scope.records, function (record) {
                             pis.push(_.clone(record.pi));
                         });
-
                         return piRest.calculateCpi(pis).$promise;
-
                     }, function (failure) {
                         $scope.message = '无法计算此PI值';
                         $log.log(failure);
@@ -88,18 +97,6 @@ angular.module('relations').controller('parentCtrl', ['$scope', '$log', 'locusRe
         $scope.removeRecord = function (index) {
             $scope.records.splice(index, 1);
         };
-
-        function pushRecordToCsv(exportedRecords) {
-            _.each($scope.records, function (record) {
-                var exportedRecord = _.clone(record);
-                _.each($scope.loci, function (locus) {
-                    if (locus.locusId === exportedRecord.locus) {
-                        exportedRecord.locus = locus.name;
-                    }
-                });
-                exportedRecords.push(exportedRecord);
-            });
-        }
 
         $scope.exportRecordsToCSV = function () {
             var exportedRecords = [];
