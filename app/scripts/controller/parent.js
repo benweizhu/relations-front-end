@@ -13,7 +13,7 @@ angular.module('relations').controller('parentCtrl', ['$scope', '$log', 'locusRe
             $scope.rcp = 0;
         }
 
-        function rejectIfSameLocusExistInTable() {
+        function addErrorMessageIfSameLocusExistInTable() {
             _.each($scope.records, function (record) {
                 if (record.locus === $scope.newRecord.locus) {
                     $scope.message = '基因座' + $scope.getLocusName($scope.newRecord.locus) + '已经存在';
@@ -33,7 +33,7 @@ angular.module('relations').controller('parentCtrl', ['$scope', '$log', 'locusRe
             });
         }
 
-        function getPiArray() {
+        function getPiArrayForCpiCalculate() {
             var pis = [];
             _.each($scope.records, function (record) {
                 pis.push(_.clone(record.pi));
@@ -43,13 +43,13 @@ angular.module('relations').controller('parentCtrl', ['$scope', '$log', 'locusRe
 
         initScopeVariables();
 
-        $scope.getLoci = function () {
+        $scope.queryLoci = function () {
             locusRest.query({kitId: $scope.kit.kitId}, function (success) {
                 $scope.loci = success;
             });
         };
 
-        $scope.getLocusName = function (locusId) {
+        $scope.displayLocusName = function (locusId) {
             var locusName = '';
             _.each($scope.loci, function (locus) {
                 if (locus.locusId === locusId) {
@@ -61,7 +61,7 @@ angular.module('relations').controller('parentCtrl', ['$scope', '$log', 'locusRe
 
         $scope.addRecord = function () {
             $scope.message = '';
-            rejectIfSameLocusExistInTable();
+            addErrorMessageIfSameLocusExistInTable();
             if (_.isEmpty($scope.message)) {
                 var piPromise = piRest.calculateOneParentPi($scope.newRecord).$promise;
 
@@ -69,7 +69,7 @@ angular.module('relations').controller('parentCtrl', ['$scope', '$log', 'locusRe
                     function (success) {
                         $scope.newRecord.pi = success.value;
                         $scope.records.push(_.clone($scope.newRecord));
-                        return piRest.calculateCpi(getPiArray()).$promise;
+                        return piRest.calculateCpi(getPiArrayForCpiCalculate()).$promise;
                     }, function (failure) {
                         $scope.message = '无法计算此PI值';
                         $log.log(failure);

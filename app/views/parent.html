@@ -15,7 +15,7 @@
             </thead>
             <tbody>
             <tr ng-repeat="record in records">
-                <td>{{getLocusName(record.locus)}}</td>
+                <td>{{displayLocusName(record.locus)}}</td>
                 <td>{{record.af1}}</td>
                 <td>{{record.af2}}</td>
                 <td>{{record.c1}}</td>
@@ -59,7 +59,7 @@
         <tbody>
         <tr>
             <td>
-                <select ng-model="kit" ng-options="kit as kit.name for kit in kits" ng-change="getLoci()"
+                <select ng-model="kit" ng-options="kit as kit.name for kit in kits" ng-change="queryLoci()"
                         class="form-control">
                     <option value="">--请选择--</option>
                 </select>
