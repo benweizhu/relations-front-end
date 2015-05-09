@@ -41,6 +41,46 @@ angular.module('relations').controller('parentCtrl', ['$scope', '$log', 'locusRe
             return pis;
         }
 
+        function calculatePi() {
+            return piRest.calculateOneParentPi($scope.newRecord).$promise;
+        }
+
+        function calculateCpi(piPromise) {
+            return piPromise.then(
+                function (success) {
+                    $scope.newRecord.pi = success.value;
+                    $scope.records.push(_.clone($scope.newRecord));
+                    return piRest.calculateCpi(getPiArrayForCpiCalculate()).$promise;
+                }, function (failure) {
+                    $scope.message = '无法计算此PI值';
+                    $log.log(failure);
+                }
+            );
+        }
+
+        function calculateRcp(cpiPromise) {
+            return cpiPromise.then(
+                function (success) {
+                    $scope.cpi = success.value;
+                    return piRest.calculateRcp($scope.cpi).$promise;
+                }, function (failure) {
+                    $scope.message = '无法计算此CPI值';
+                    $log.log(failure);
+                }
+            );
+        }
+
+        function setRcpInCallback(rcpPromise) {
+            rcpPromise.then(
+                function (success) {
+                    $scope.rcp = success.value;
+                }, function (failure) {
+                    $scope.message = '无法计算此RCP值';
+                    $log.log(failure);
+                }
+            );
+        }
+
         initScopeVariables();
 
         $scope.queryLoci = function () {
@@ -63,37 +103,10 @@ angular.module('relations').controller('parentCtrl', ['$scope', '$log', 'locusRe
             $scope.message = '';
             addErrorMessageIfSameLocusExistInTable();
             if (_.isEmpty($scope.message)) {
-                var piPromise = piRest.calculateOneParentPi($scope.newRecord).$promise;
-
-                var cpiPromise = piPromise.then(
-                    function (success) {
-                        $scope.newRecord.pi = success.value;
-                        $scope.records.push(_.clone($scope.newRecord));
-                        return piRest.calculateCpi(getPiArrayForCpiCalculate()).$promise;
-                    }, function (failure) {
-                        $scope.message = '无法计算此PI值';
-                        $log.log(failure);
-                    }
-                );
-
-                var rcpPromise = cpiPromise.then(
-                    function (success) {
-                        $scope.cpi = success.value;
-                        return piRest.calculateRcp($scope.cpi).$promise;
-                    }, function (failure) {
-                        $scope.message = '无法计算此CPI值';
-                        $log.log(failure);
-                    }
-                );
-
-                rcpPromise.then(
-                    function (success) {
-                        $scope.rcp = success.value;
-                    }, function (failure) {
-                        $scope.message = '无法计算此RCP值';
-                        $log.log(failure);
-                    }
-                );
+                var piPromise = calculatePi();
+                var cpiPromise = calculateCpi(piPromise);
+                var rcpPromise = calculateRcp(cpiPromise);
+                setRcpInCallback(rcpPromise);
             }
         };
 
