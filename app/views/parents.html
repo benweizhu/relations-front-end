@@ -1,39 +1,108 @@
 <div ng-controller="parentsCtrl">
-    试剂盒: <select ng-model="kit" ng-options="kit for kit in kits" ng-change="selectKit()"></select>
-    <table>
+    <div>
+        <h3 class="text-primary">报告结果</h3>
+    </div>
+    <div>
+        <table class="table table-hover parents-table">
+            <thead>
+            <th>基因座</th>
+            <th>AF1</th>
+            <th>AF2</th>
+            <th>M1</th>
+            <th>M2</th>
+            <th>C1</th>
+            <th>C2</th>
+            <th>PI</th>
+            <th>操作</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="record in records">
+                <td>{{displayLocusName(record.locus)}}</td>
+                <td>{{record.af1}}</td>
+                <td>{{record.af2}}</td>
+                <td>{{record.m1}}</td>
+                <td>{{record.m2}}</td>
+                <td>{{record.c1}}</td>
+                <td>{{record.c2}}</td>
+                <td>{{record.pi}}</td>
+                <td>
+                    <button class="btn btn-danger btn-sm btn-block" ng-click="removeRecord($index)">删除</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">CPI = {{cpi}}</td>
+                <td colspan="2">RCP = {{rcp}}</td>
+                <td></td>
+                <td>当前记录数 <span class="badge">{{records.length}}</span></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <button class="btn btn-warning btn-sm btn-block" ng-csv="exportRecordsToCSV()"
+                            csv-header="['基因座', 'AF1', 'AF2','M1','M2', 'C1', 'C2', 'PI']" filename="result.csv">导出到CSV
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+    <br>
+
+    <div>
+        <h3 class="text-danger">计算输入</h3>
+    </div>
+    <table class="table parents-table">
         <thead>
-        <th>基因座</th>
+        <th>试剂盒</th>
+        <th>等位基因</th>
         <th>AF1</th>
-        <th>AF2</th>
+        <th>AF1</th>
         <th>M1</th>
         <th>M2</th>
         <th>C1</th>
         <th>C2</th>
-        <th>PI</th>
         <th>操作</th>
         </thead>
         <tbody>
-        <tr ng-repeat="locus in locuses">
-            <td>{{locus.code}}</td>
-            <td>{{locus.af1}}</td>
-            <td>{{locus.af2}}</td>
-            <td>{{locus.m1}}</td>
-            <td>{{locus.m2}}</td>
-            <td>{{locus.c1}}</td>
-            <td>{{locus.c2}}</td>
-            <td>{{locus.pi}}</td>
-            <td><input type="button" ng-click="remove($index)" value="删除"></td>
-        </tr>
         <tr>
-            <td><select ng-model="code" ng-options="locusCode for locusCode in locusCodes"></select></td>
-            <td><input type="text" ng-model="af1"></td>
-            <td><input type="text" ng-model="af2"></td>
-            <td><input type="text" ng-model="m1"></td>
-            <td><input type="text" ng-model="m2"></td>
-            <td><input type="text" ng-model="c1"></td>
-            <td><input type="text" ng-model="c2"></td>
+            <td>
+                <select ng-model="kit" ng-options="kit as kit.name for kit in kits" ng-change="queryLoci()"
+                        class="form-control">
+                    <option value="">--请选择--</option>
+                </select>
+            </td>
+            <td>
+                <select ng-model="newRecord.locus" ng-options="locus.locusId as locus.name for locus in loci"
+                        class="form-control">
+                    <option value="">--请选择--</option>
+                </select>
+            </td>
+            <td>
+                <input type="text" ng-model="newRecord.af1" class="form-control">
+            </td>
+            <td>
+                <input type="text" ng-model="newRecord.af2" class="form-control">
+            </td>
+            <td>
+                <input type="text" ng-model="newRecord.m1" class="form-control">
+            </td>
+            <td>
+                <input type="text" ng-model="newRecord.m2" class="form-control">
+            </td>
+            <td>
+                <input type="text" ng-model="newRecord.c1" class="form-control">
+            </td>
+            <td>
+                <input type="text" ng-model="newRecord.c2" class="form-control">
+            </td>
+            <td>
+                <button class="btn btn-success btn-sm btn-block" ng-click="addRecord()">添加</button>
+            </td>
         </tr>
         </tbody>
     </table>
-    <input type="button" value="添加" ng-click="add()">
+    <div class="alert alert-danger" ng-show="message">
+        {{message}}
+    </div>
 </div>

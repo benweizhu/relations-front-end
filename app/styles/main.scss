@@ -3,9 +3,14 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
-.table {
+.parent-table {
   th {
-    max-width: 14.28%;
     width: 14.28%;
+  }
+}
+
+.parents-table {
+  th {
+    width: 11.11%;
   }
 }
