@@ -2,11 +2,10 @@
 
 describe('Service: restService', function () {
 
-    var kitRest;
-    var $httpMock;
+    var kitRest, $httpMock;
 
     // load the controller's module
-    beforeEach(module('restService'));
+    beforeEach(module('relations'));
 
     beforeEach(inject(function (_kitRest_, $httpBackend) {
         kitRest = _kitRest_;

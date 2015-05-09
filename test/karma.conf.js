@@ -17,10 +17,12 @@ module.exports = function (config) {
             'bower_components/angular-mocks/angular-mocks.js',
             'bower_components/angular-resource/angular-resource.js',
             'bower_components/angular-route/angular-route.js',
+            'bower_components/angular-sanitize/angular-sanitize.js',
+            'bower_components/ng-csv/build/ng-csv.js',
             'app/scripts/app.js',
-            'app/scripts/controllers/about.js',
-            'app/scripts/controllers/main.js',
-            'app/scripts/service/rest.js',
+            'app/scripts/controller/about.js',
+            'app/scripts/controller/main.js',
+            'app/scripts/service/resource.js',
             'test/spec/**/*.spec.js'
         ],
 
