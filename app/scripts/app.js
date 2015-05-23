@@ -13,11 +13,21 @@ angular.module('relations', ['ngResource', 'ngRoute', 'ngSanitize', 'ngCsv'])
             })
             .when('/parent', {
                 templateUrl: 'views/parent.html',
-                controller: 'parentCtrl'
+                controller: 'parentCtrl',
+                resolve: {
+                    kits: function (kitRest) {
+                        return kitRest.query().$promise;
+                    }
+                }
             })
             .when('/parents', {
                 templateUrl: 'views/parents.html',
-                controller: 'parentsCtrl'
+                controller: 'parentsCtrl',
+                resolve: {
+                    kits: function (kitRest) {
+                        return kitRest.query().$promise;
+                    }
+                }
             })
             .otherwise({
                 redirectTo: '/'

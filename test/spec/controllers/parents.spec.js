@@ -9,7 +9,8 @@ describe('Controller: parentsCtrl', function () {
     beforeEach(inject(function ($controller, $rootScope) {
         scope = $rootScope.$new();
         parentsCtrl = $controller('parentsCtrl', {
-            $scope: scope
+            $scope: scope,
+            kits: {}
         });
     }));
 

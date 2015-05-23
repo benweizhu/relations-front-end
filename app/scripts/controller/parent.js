@@ -1,14 +1,12 @@
 'use strict';
 
-angular.module('relations').controller('parentCtrl', ['$scope', '$log', 'locusRest', 'kitRest', 'piRest',
-    function ($scope, $log, locusRest, kitRest, piRest) {
+angular.module('relations').controller('parentCtrl', ['$scope', '$log', 'locusRest', 'kits', 'piRest',
+    function ($scope, $log, locusRest, kits, piRest) {
 
         function initScopeVariables() {
             $scope.records = [];
             $scope.newRecord = {};
-            kitRest.query({}, function (response) {
-                $scope.kits = response;
-            });
+            $scope.kits = kits;
             $scope.cpi = 0;
             $scope.rcp = 0;
         }
