@@ -29,6 +29,10 @@ angular.module('relations', ['ngResource', 'ngRoute', 'ngSanitize', 'ngCsv'])
                     }
                 }
             })
+            .when('/database', {
+                templateUrl: 'views/database.html',
+                controller: 'databaseCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });

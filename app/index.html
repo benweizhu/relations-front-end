@@ -21,7 +21,7 @@
 <![endif]-->
 
 <!-- Add your site or application content here -->
-<div ng-controller="menuBarCtrl">
+<div ng-controller="menuCtrl">
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
@@ -38,6 +38,12 @@
                 <ul class="nav navbar-nav">
                     <li class="{{setActive('/parent')}}"><a ng-href="#/parent">单亲</a></li>
                     <li class="{{setActive('/parents')}}"><a ng-href="#/parents">双亲</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">管理<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#/database">数据库</a></li>
+                        </ul>
+                    </li>
                     <li class="{{setActive('/about')}}"><a ng-href="#/about">关于</a></li>
                 </ul>
             </div>
@@ -69,7 +75,7 @@
 <script src="scripts/controller/main.js"></script>
 <script src="scripts/controller/parent.js"></script>
 <script src="scripts/controller/parents.js"></script>
-<script src="scripts/controller/menuBarCtrl.js"></script>
+<script src="scripts/controller/menu.js"></script>
 <script src="scripts/controller/about.js"></script>
 <!-- endbuild -->
 </body>
