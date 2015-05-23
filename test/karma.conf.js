@@ -25,6 +25,7 @@ module.exports = function (config) {
             'app/scripts/controller/parent.js',
             'app/scripts/controller/parents.js',
             'app/scripts/service/resource.js',
+            'bower_components/underscore/underscore.js',
             'test/spec/**/*.spec.js'
         ],
 
