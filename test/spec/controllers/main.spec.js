@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: MainCtrl', function () {
+describe('Controller: mainCtrl', function () {
 
     beforeEach(module('relations'));
 
@@ -9,11 +9,16 @@ describe('Controller: MainCtrl', function () {
     beforeEach(inject(function ($controller, $rootScope) {
         scope = $rootScope.$new();
         MainCtrl = $controller('mainCtrl', {
-            $scope: scope
+            $scope: scope,
+            $location: {
+                path: function () {
+                    return 'path';
+                }
+            }
         });
     }));
 
-    it('should attach a list of awesomeThings to the scope', function () {
-
+    it('should return "active" when location is correct', function () {
+        expect(scope.setActive('path')).toBe('active');
     });
 });

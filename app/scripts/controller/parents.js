@@ -81,45 +81,44 @@ angular.module('relations').controller('parentsCtrl', ['$scope', '$log', 'locusR
             );
         }
 
+        function bindNgEvent() {
+            $scope.queryLoci = function () {
+                locusRest.query({kitId: $scope.kit.kitId}, function (success) {
+                    $scope.loci = success;
+                });
+            };
+            $scope.displayLocusName = function (locusId) {
+                var locusName = '';
+                _.each($scope.loci, function (locus) {
+                    if (locus.locusId === locusId) {
+                        locusName = locus.name;
+                    }
+                });
+                return locusName;
+            };
+            $scope.addRecord = function () {
+                $scope.message = '';
+                addErrorMessageIfSameLocusExistInTable();
+                if (_.isEmpty($scope.message)) {
+                    var piPromise = calculatePi();
+                    var cpiPromise = calculateCpi(piPromise);
+                    var rcpPromise = calculateRcp(cpiPromise);
+                    setRcpInCallback(rcpPromise);
+                }
+            };
+            $scope.removeRecord = function (index) {
+                $scope.records.splice(index, 1);
+            };
+            $scope.exportRecordsToCSV = function () {
+                var exportedRecords = [];
+                pushRecordToCsv(exportedRecords);
+                exportedRecords.push({cpiName: 'cpi', cpi: $scope.cpi});
+                exportedRecords.push({rcpName: 'rcp', rcp: $scope.rcp});
+                return exportedRecords;
+            };
+        }
+
         initScopeVariables();
 
-        $scope.queryLoci = function () {
-            locusRest.query({kitId: $scope.kit.kitId}, function (success) {
-                $scope.loci = success;
-            });
-        };
-
-        $scope.displayLocusName = function (locusId) {
-            var locusName = '';
-            _.each($scope.loci, function (locus) {
-                if (locus.locusId === locusId) {
-                    locusName = locus.name;
-                }
-            });
-            return locusName;
-        };
-
-        $scope.addRecord = function () {
-            $scope.message = '';
-            addErrorMessageIfSameLocusExistInTable();
-            if (_.isEmpty($scope.message)) {
-                var piPromise = calculatePi();
-                var cpiPromise = calculateCpi(piPromise);
-                var rcpPromise = calculateRcp(cpiPromise);
-                setRcpInCallback(rcpPromise);
-            }
-        };
-
-        $scope.removeRecord = function (index) {
-            $scope.records.splice(index, 1);
-        };
-
-        $scope.exportRecordsToCSV = function () {
-            var exportedRecords = [];
-            pushRecordToCsv(exportedRecords);
-            exportedRecords.push({cpiName: 'cpi', cpi: $scope.cpi});
-            exportedRecords.push({rcpName: 'rcp', rcp: $scope.rcp});
-            return exportedRecords;
-        };
-
+        bindNgEvent();
     }]);
