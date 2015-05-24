@@ -1,17 +1,25 @@
 <div class="row">
-    <div class="col-md-2">选择试剂盒</div>
+    <div class="col-md-2"><label>选择已有试剂盒</label></div>
     <div class="col-md-2">
-        <select>
+        <select class="form-control">
             <option value="volvo">Volvo</option>
             <option value="saab">Saab</option>
             <option value="opel">Opel</option>
             <option value="audi">Audi</option>
         </select>
     </div>
-    <div class="col-md-2">新建一个试剂盒</div>
-    <div class="col-md-2"><input type="text"/></div>
-    <div class="col-md-2"><input type="button" value="保存"/></div>
-    <div class="col-md-2"></div>
+    <div class="col-md-2"><input type="text" class="form-control" placeholder="填入试剂盒名称"/></div>
+    <div class="col-md-2">
+        <button class="btn btn-success btn-sm btn-block">添加新试剂盒</button>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+<br>
+<br>
+<div class="row">
+    <div class="col-md-12">
+        当前试剂盒所有基因座及等位基因预览
+    </div>
 </div>
 <div class="row">
     <div class="col-md-2">
@@ -24,6 +32,14 @@
                 <td>1</td>
                 <td>0.000012</td>
             </tr>
+            <tr>
+                <td>1</td>
+                <td>0.000012</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>0.000012</td>
+            </tr>
             </tbody>
         </table>
     </div>
@@ -93,20 +109,29 @@
         </table>
     </div>
 </div>
+<br>
+<br>
 <div class="row">
-    <div class="col-md-2">选择基因座</div>
+    <div class="col-md-2"><label>选择已有基因座</label></div>
     <div class="col-md-2">
-        <select>
+        <select class="form-control">
             <option value="volvo">Volvo</option>
             <option value="saab">Saab</option>
             <option value="opel">Opel</option>
             <option value="audi">Audi</option>
         </select>
     </div>
-    <div class="col-md-2">新建一个基因座</div>
-    <div class="col-md-2"><input type="text"/></div>
-    <div class="col-md-2"><input type="button" value="保存"/></div>
-    <div class="col-md-2"></div>
+    <div class="col-md-2"><input type="text" class="form-control" placeholder="填入基因座名称"/></div>
+    <div class="col-md-2">
+        <button class="btn btn-success btn-sm btn-block">添加新基因座</button>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-12">
+        当前等位基因预览
+    </div>
 </div>
 <div class="row">
     <div class="col-md-12">
@@ -118,7 +143,9 @@
             <tr>
                 <td>1</td>
                 <td>0.000012</td>
-                <td><input type="button" value="删除"></td>
+                <td>
+                    <button class="btn btn-danger btn-sm btn-block">删除</button>
+                </td>
             </tr>
             <tr>
                 <td>1</td>
@@ -132,11 +159,12 @@
         </table>
     </div>
 </div>
+<br>
 <div class="row">
-    <div class="col-md-2">添加新的等位基因</div>
-    <div class="col-md-2"><input type="text"/></div>
-    <div class="col-md-1">概率</div>
-    <div class="col-md-2"><input type="text"/></div>
-    <div class="col-md-2"><input type="button" value="保存"/></div>
+    <div class="col-md-2"><input type="text" class="form-control" placeholder="等位基因"/></div>
+    <div class="col-md-2"><input type="text" class="form-control" placeholder="概率"/></div>
+    <div class="col-md-2">
+        <button class="btn btn-success btn-sm btn-block">添加</button>
+    </div>
     <div class="col-md-6"></div>
 </div>
